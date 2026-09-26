@@ -44,5 +44,9 @@ export function useTasks() {
     );
   }
 
-  return { tasks, addTask, toggleTask };
+  function removeCompleted() {
+    setTasks((current) => current.filter((task) => !task.done));
+  }
+
+  return { tasks, addTask, toggleTask, removeCompleted };
 }

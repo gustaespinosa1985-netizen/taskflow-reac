@@ -4,7 +4,7 @@ import TaskCounter from "./components/TaskCounter";
 import { useTasks } from "./hooks/useTasks";
 
 export default function App() {
-  const { tasks, addTask, toggleTask } = useTasks();
+  const { tasks, addTask, toggleTask, removeCompleted } = useTasks();
 
   return (
     <>
@@ -20,6 +20,12 @@ export default function App() {
 
         <TaskList tasks={tasks} onToggle={toggleTask} />
         <TaskCounter tasks={tasks} />
+
+        {tasks.some((task) => task.done) && (
+          <button type="button" className="clear-done" onClick={removeCompleted}>
+            Eliminar completadas
+          </button>
+        )}
       </main>
 
       <footer>
